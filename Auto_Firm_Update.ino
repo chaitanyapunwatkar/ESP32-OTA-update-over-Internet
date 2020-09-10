@@ -33,9 +33,9 @@ void loop()
   delay(100);
   digitalWrite(2, 0);
   delay(100);
-
+  //check any update is available after every 50 times blinking
   updateCheckTimer++;
-  if (updateCheckTimer > 30)
+  if (updateCheckTimer > 50)
   {
     updateCheckTimer = 0;
     check();
