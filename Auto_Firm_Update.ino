@@ -3,14 +3,15 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-String version = "1.0.0.3";
-String CHIPID = "E04894B5AA8C";
+String version = "1.0.0.1";
+String CHIPID = "xxxxx";
+int updateCheckTimer = 0;
 void doUpdate();
 void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  WiFi.begin("geomitra-incub", "incub123#");
+  WiFi.begin("xxxx", "xxx");
   while (WiFi.status() != WL_CONNECTED)
   {
     Serial.println(".");
@@ -25,7 +26,6 @@ void setup()
   Serial.println(version);
 }
 
-int updateCheckTimer = 0;
 void loop()
 {
   // Lets blink
@@ -42,9 +42,10 @@ void loop()
   }
 }
 
+// check() function for checking of any new firmware uploaded for update.
 void check() {
   HTTPClient http;
-  String serverName = "http://theweightmeasure.000webhostapp.com/check.txt";
+  String serverName = "your website address";
   http.begin(serverName);
 
   // Send HTTP GET request
@@ -69,9 +70,10 @@ void check() {
 
 
 }
+//For updating website regarding new update has been done!
 void post() {
   HTTPClient http;
-  String serverName = "http://theweightmeasure.000webhostapp.com/value.php";
+  String serverName = "your website address for posting data";
   http.begin(serverName);
   http.addHeader("Content-Type", "application/x-www-form-urlencoded");
   String httpRequestData = "Text1=1000";
@@ -79,9 +81,11 @@ void post() {
   Serial.println("Posted check: 100");
   http.end();
 }
+
+//doUpdate() function for updating fimrware fetching latest firmware.bin file from server 
 void doUpdate()
 {
-  String url = "http://theweightmeasure.000webhostapp.com/firm.bin";
+  String url = "your website address where firmware is stored";
   //url += "&s=" + CHIPID;
   //url += "&v=" + version;
 
