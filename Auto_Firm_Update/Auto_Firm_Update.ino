@@ -4,14 +4,14 @@
 #include <HTTPClient.h>
 
 String version = "1.0.0.1";
-String CHIPID = "xxxxx";
+String CHIPID = "xxxxxx";
 int updateCheckTimer = 0;
 void doUpdate();
 void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  WiFi.begin("xxxx", "xxx");
+  WiFi.begin("xxxxxx", "xxxxx");
   while (WiFi.status() != WL_CONNECTED)
   {
     Serial.println(".");
@@ -42,7 +42,7 @@ void loop()
   }
 }
 
-// check() function for checking of any new firmware uploaded for update.
+// check() function for checking of any new firmware uploaded for update. It will get value from check.txt if value is 1 then new update is there, Update the firmware.
 void check() {
   HTTPClient http;
   String serverName = "your website address";
@@ -70,7 +70,8 @@ void check() {
 
 
 }
-//For updating website regarding new update has been done!
+
+//This function will post the value 100 in check.txt for updating website that new update has been done!
 void post() {
   HTTPClient http;
   String serverName = "your website address for posting data";
@@ -82,7 +83,7 @@ void post() {
   http.end();
 }
 
-//doUpdate() function for updating fimrware fetching latest firmware.bin file from server 
+//doUpdate() function for updating firmware fetching latest firmware.bin file from server 
 void doUpdate()
 {
   String url = "your website address where firmware is stored";
