@@ -71,7 +71,7 @@ void check() {
 
 }
 
-//This function will post the value 100 in check.txt for updating website that new update has been done!
+//This function will post the value 100 in check.txt for updating website that new update has been received!
 void post() {
   HTTPClient http;
   String serverName = "your website address for posting data";
